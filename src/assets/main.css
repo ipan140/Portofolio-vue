@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Variabel Brand */
-  --color-brand-pink: #e8417a;
-  --color-brand-blue: #4878c0;
+  /* Variabel Brand sekarang diarahkan ke variabel dinamis per tema */
+  --color-brand-pink: var(--theme-primary);
+  --color-brand-blue: var(--theme-secondary);
 
   /* Mapping ke Utility Class */
   --color-surface-bg: var(--bg-color);
@@ -14,20 +14,61 @@
 }
 
 @layer base {
-  :root {
+  /* 1. DEFAULT / LIGHT THEME */
+  :root,
+  [data-theme='light'] {
     --bg-color: #eef0f4;
     --card-color: #f5f6f8;
     --border-color: #e2e4e9;
-    --text-color: #1a1d23 !important; /* Paksa hitam di Light */
+    --text-color: #1a1d23 !important;
     --muted-color: #64748b;
+    --theme-primary: #e8417a; /* Pink bawaanmu */
+    --theme-secondary: #4878c0; /* Biru bawaanmu */
   }
 
-  .dark {
+  /* 2. DARK THEME */
+  .dark,
+  [data-theme='dark'] {
     --bg-color: #0f1117;
     --card-color: #181c25;
     --border-color: #252a36;
-    --text-color: #f8fafc !important; /* Paksa putih di Dark */
+    --text-color: #f8fafc !important;
     --muted-color: #94a3b8;
+    --theme-primary: #f0547c;
+    --theme-secondary: #5a8dec;
+  }
+
+  /* 3. CUPCAKE THEME */
+  [data-theme='cupcake'] {
+    --bg-color: #faf7f5;
+    --card-color: #ffffff;
+    --border-color: #e0d2d1;
+    --text-color: #291334 !important;
+    --muted-color: #8c7f8e;
+    --theme-primary: #65c3c8; /* Tosca pastel */
+    --theme-secondary: #ef9fbc; /* Pink pastel */
+  }
+
+  /* 4. DRACULA THEME */
+  [data-theme='dracula'] {
+    --bg-color: #282a36;
+    --card-color: #44475a;
+    --border-color: #6272a4;
+    --text-color: #f8f8f2 !important;
+    --muted-color: #6272a4;
+    --theme-primary: #ff79c6; /* Pink neon Dracula */
+    --theme-secondary: #bd93f9; /* Ungu Dracula */
+  }
+
+  /* 5. PROCYON THEME */
+  [data-theme='procyon'] {
+    --bg-color: #0b0f19;
+    --card-color: #121827;
+    --border-color: #1f2937;
+    --text-color: #e2e8f0 !important;
+    --muted-color: #64748b;
+    --theme-primary: #8b5cf6; /* Ungu elegan */
+    --theme-secondary: #14b8a6; /* Teal */
   }
 
   body {
@@ -47,7 +88,11 @@
   span,
   div {
     color: var(--text-color);
-    transition: color 0.3s ease;
+    /* Transisi ditambahkan ke background & border agar perubahan tema mulus */
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease;
   }
 
   .p-button:not(.p-button-outlined) *,
