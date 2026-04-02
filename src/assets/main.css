@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Warna Brand Tetap */
+  --color-brand-pink: #e8417a;
+  --color-brand-pink-dark: #f0547c;
+  --color-brand-blue: #4878c0;
+
+  /* Mendefinisikan Variabel Dinamis (Akan berubah sesuai mode) */
+  --color-surface-bg: var(--bg-color);
+  --color-surface-card: var(--card-color);
+  --color-surface-border: var(--border-color);
+  --color-text-main: var(--text-color);
+  --color-text-muted: var(--muted-color);
+}
+
+@layer base {
+  /* Konfigurasi Mode Terang (Default) */
+  :root {
+    --bg-color: #eef0f4;
+    --card-color: #f5f6f8;
+    --border-color: #e2e4e9;
+    --text-color: #1a1d23;
+    --muted-color: #7a8090;
+  }
+
+  /* Konfigurasi Mode Gelap (Otomatis Terbaca Tailwind) */
+  .dark {
+    --bg-color: #0f1117;
+    --card-color: #181c25;
+    --border-color: #252a36;
+    --text-color: #e8eaf0;
+    --muted-color: #6b7280;
+  }
+
+  body {
+    /* Gunakan variabel dinamis untuk background dan teks */
+    @apply bg-surface-bg text-text-main transition-colors duration-200;
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+  }
+}
+
+/* Memastikan PrimeVue juga mengikuti warna border kita */
+@layer p-components {
+  .p-component {
+    border-color: var(--border-color);
+  }
+}
