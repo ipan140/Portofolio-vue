@@ -7,56 +7,78 @@
             </div>
             <div>
                 <h3 class="text-[14px] font-bold text-text-main dark:text-white">Publications</h3>
-                <p class="text-[11px] text-text-muted">Showcasing 2 publications</p>
+                <p class="text-[11px] text-text-muted">Research papers and conference articles</p>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <VirtualScroller :items="publications" :itemSize="120" showLoader :delay="200"
+            class="border-none bg-transparent" style="width: 100%; height: 260px">
+            <template v-slot:item="{ item, options }">
+                <div :class="['group p-4 rounded-xl border border-surface-border dark:border-surface-border-dark flex flex-col gap-2 hover:border-brand-pink/50 transition-all cursor-default mb-2 mx-1',
+                    { 'bg-surface-bg/30 dark:bg-white/5': options.odd }]" style="height: 110px">
 
-            <div
-                class="group border border-surface-border dark:border-surface-border-dark rounded-xl p-4 flex flex-col gap-3 hover:border-brand-pink/50 transition-all cursor-default">
-                <div class="text-center">
-                    <h4
-                        class="text-[12px] font-bold text-text-main dark:text-gray-100 group-hover:text-brand-pink transition-colors">
-                        Publication Title
-                    </h4>
-                    <p class="text-[10px] font-semibold text-brand-blue dark:text-blue-400 mt-1">
-                        Journal Name
-                    </p>
-                    <p class="text-[9px] text-text-muted mt-0.5">
-                        Author, John Doe, Jane Smith
+                    <div class="text-center">
+                        <h4
+                            class="text-[11px] font-bold text-text-main dark:text-gray-100 group-hover:text-brand-pink transition-colors truncate">
+                            {{ item.title }}
+                        </h4>
+                        <p class="text-[9px] font-semibold text-brand-blue dark:text-blue-400 mt-0.5">
+                            {{ item.publisher }}
+                        </p>
+                        <p class="text-[8px] text-text-muted">
+                            {{ item.authors }}
+                        </p>
+                    </div>
+
+                    <p class="text-[9px] text-text-muted leading-relaxed text-center italic line-clamp-2">
+                        "{{ item.abstract }}"
                     </p>
                 </div>
-                <p class="text-[10px] text-text-muted leading-relaxed text-center italic">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua."
-                </p>
-            </div>
+            </template>
 
-            <div
-                class="group border border-surface-border dark:border-surface-border-dark rounded-xl p-4 flex flex-col gap-3 hover:border-brand-pink/50 transition-all cursor-default">
-                <div class="text-center">
-                    <h4
-                        class="text-[12px] font-bold text-text-main dark:text-gray-100 group-hover:text-brand-pink transition-colors">
-                        Publication Title
-                    </h4>
-                    <p class="text-[10px] font-semibold text-brand-blue dark:text-blue-400 mt-1">
-                        Conference Name
-                    </p>
-                    <p class="text-[9px] text-text-muted mt-0.5">
-                        Author, John Doe, Jane Smith
-                    </p>
+            <template v-slot:loader>
+                <div class="p-4 border border-surface-border dark:border-surface-border-dark rounded-xl mb-2 mx-1"
+                    style="height: 110px">
+                    <div class="flex flex-col items-center gap-2">
+                        <Skeleton width="60%" height="0.8rem" />
+                        <Skeleton width="30%" height="0.6rem" />
+                        <Skeleton width="80%" height="1.5rem" class="mt-1" />
+                    </div>
                 </div>
-                <p class="text-[10px] text-text-muted leading-relaxed text-center italic">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua."
-                </p>
-            </div>
-
-        </div>
+            </template>
+        </VirtualScroller>
     </div>
 </template>
 
 <script setup lang="ts">
-// Menggunakan PrimeIcons pi-file
+import { ref } from 'vue';
+import VirtualScroller from 'primevue/virtualscroller';
+import Skeleton from 'primevue/skeleton';
+
+// Data simulasi publikasi
+const publications = ref([
+    {
+        title: 'Adaptive UI Systems in Modern Web Frameworks',
+        publisher: 'International Journal of Software Engineering',
+        authors: 'Ivano Rossi, Jane Smith',
+        abstract: 'Exploring the impact of atomic CSS on large scale admin dashboard performance and maintenance.'
+    },
+    {
+        title: 'LLM Integration in Local Business Branding',
+        publisher: 'Design & Tech Conference 2026',
+        authors: 'Ivano Rossi, John Doe',
+        abstract: 'A case study on automating packaging mockups using generative AI for local MSMEs.'
+    }
+]);
 </script>
+
+<style scoped>
+:deep(.p-virtualscroller::-webkit-scrollbar) {
+    width: 4px;
+}
+
+:deep(.p-virtualscroller::-webkit-scrollbar-thumb) {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+</style>
