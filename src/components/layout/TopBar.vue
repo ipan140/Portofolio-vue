@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue';
 import Select from 'primevue/select';
 
-// Interface untuk TypeScript agar tidak error strict mode
 interface PrimaryColor {
     name: string;
     value: string;
@@ -14,7 +13,7 @@ interface SurfaceTheme {
     theme: string;
 }
 
-// 1. Data Warna Primary
+// PRIMARY COLORS (tidak diubah)
 const primaryColors = ref<PrimaryColor[]>([
     { name: 'Emerald', value: '#10b981' },
     { name: 'Green', value: '#22c55e' },
@@ -34,71 +33,59 @@ const primaryColors = ref<PrimaryColor[]>([
     { name: 'Rose', value: '#f43f5e' }
 ]);
 
-// 2. Data Warna Surface
-const surfaceColors = ref<SurfaceTheme[]>([
-    { name: 'Light', value: '#eef0f4', theme: 'light' },
-    { name: 'Dark', value: '#0f1117', theme: 'dark' },
-    { name: 'Cupcake', value: '#faf7f5', theme: 'cupcake' },
-    { name: 'Dracula', value: '#282a36', theme: 'dracula' },
-    { name: 'Procyon', value: '#0b0f19', theme: 'procyon' }
+// SURFACE → di-group (INI YANG DIRAPIKAN)
+const surfaceColors = ref([
+    {
+        label: 'Light',
+        items: [
+            { name: 'Light', value: '#ffffff', theme: 'light' },
+            { name: 'Cupcake', value: '#faf7f5', theme: 'cupcake' }
+        ]
+    },
+    {
+        label: 'Dark',
+        items: [
+            { name: 'Dark', value: '#0f1117', theme: 'dark' },
+            { name: 'Dracula', value: '#282a36', theme: 'dracula' },
+            { name: 'Procyon', value: '#0b0f19', theme: 'procyon' }
+        ]
+    }
 ]);
 
-// State
-const activePrimary = ref<PrimaryColor>(primaryColors.value[14]!); // Pink
-const activeSurface = ref<SurfaceTheme>(surfaceColors.value[0]!); // Light
+const activePrimary = ref(primaryColors.value[14]!);
+const activeSurface = ref(surfaceColors.value[0].items[0]!);
 
-// 3. Fungsi Apply Primary Color
+// APPLY
 const applyPrimary = () => {
-    const color = activePrimary.value;
-    if (!color) return;
-
-    document.documentElement.style.setProperty('--theme-primary', color.value);
-    localStorage.setItem('primary-color', JSON.stringify(color));
+    document.documentElement.style.setProperty('--theme-primary', activePrimary.value.value);
+    localStorage.setItem('primary-color', JSON.stringify(activePrimary.value));
 };
 
-// 4. Fungsi Apply Surface Theme
 const applySurface = () => {
     const surface = activeSurface.value;
-    if (!surface) return;
 
     document.documentElement.setAttribute('data-theme', surface.theme);
 
     const darkThemes = ['dark', 'dracula', 'procyon'];
-    if (darkThemes.includes(surface.theme)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', darkThemes.includes(surface.theme));
 
     localStorage.setItem('surface-theme', JSON.stringify(surface));
 };
 
-// 5. Load preferensi saat halaman dimuat
+// LOAD
 onMounted(() => {
     const savedPrimary = localStorage.getItem('primary-color');
     const savedSurface = localStorage.getItem('surface-theme');
 
     if (savedPrimary) {
-        const parsed = JSON.parse(savedPrimary);
-        // Pastikan warna yang di-load ada di dalam list (menghindari error referensi)
-        const found = primaryColors.value.find(c => c.name === parsed.name);
-        if (found) {
-            activePrimary.value = found;
-            applyPrimary();
-        }
+        activePrimary.value = JSON.parse(savedPrimary);
+        applyPrimary();
     } else {
         applyPrimary();
     }
 
     if (savedSurface) {
-        const parsed = JSON.parse(savedSurface);
-        const found = surfaceColors.value.find(s => s.theme === parsed.theme);
-        if (found) {
-            activeSurface.value = found;
-            applySurface();
-        }
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        activeSurface.value = surfaceColors.value[1]!;
+        activeSurface.value = JSON.parse(savedSurface);
         applySurface();
     }
 });
@@ -106,70 +93,114 @@ onMounted(() => {
 
 <template>
     <div
-        class="flex flex-col sm:flex-row sm:items-center justify-between px-5 py-3 bg-surface-card dark:bg-surface-card-dark border-b border-surface-border dark:border-surface-border-dark transition-colors duration-300 gap-4">
+        class="flex flex-col md:flex-row md:items-center justify-between px-5 py-4 md:py-3 bg-surface-card dark:bg-surface-card-dark border-b border-surface-border dark:border-surface-border-dark transition-colors duration-300 gap-4">
 
-        <div class="flex items-center gap-2 shrink-0">
-            <i class="pi pi-palette text-[12px]" :style="{ color: activePrimary?.value }"></i>
-            <span class="text-[10px] font-bold uppercase tracking-widest text-text-main dark:text-gray-200">
+        <!-- HEADER -->
+        <div class="flex items-center gap-2.5 shrink-0">
+            <i class="pi pi-palette text-[13px]" :style="{ color: activePrimary?.value }"></i>
+            <span class="text-[11px] md:text-[10px] font-bold uppercase tracking-widest">
                 Theme Configurator
             </span>
         </div>
 
-        <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center w-full md:w-auto gap-3 sm:gap-5">
 
-            <div class="flex items-center gap-2">
-                <span class="text-[10px] font-medium text-text-muted">Surface:</span>
-                <Select v-model="activeSurface" :options="surfaceColors" optionLabel="name"
-                    class="w-[120px] !border-surface-border dark:!border-surface-border-dark !bg-transparent hover:!bg-gray-50 dark:hover:!bg-white/5 transition-all shadow-sm"
-                    @change="applySurface">
+            <!-- SURFACE -->
+            <div class="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
+                <span class="text-[11px] md:text-[10px] font-semibold shrink-0">Surface:</span>
 
+                <Select
+                    v-model="activeSurface"
+                    :options="surfaceColors"
+                    optionLabel="name"
+                    optionGroupLabel="label"
+                    optionGroupChildren="items"
+                    class="flex-1 sm:flex-none sm:w-[135px] !border-transparent hover:!border-gray-300 dark:hover:!border-gray-600 !bg-transparent hover:!bg-gray-100 dark:hover:!bg-white/5 transition-all"
+                    @change="applySurface"
+                >
+
+                    <!-- HEADER DROPDOWN -->
+                    <template #header>
+                        <div class="px-3 py-2 text-[10px] font-semibold text-text-muted">
+                            Available Themes
+                        </div>
+                    </template>
+
+                    <!-- GROUP -->
+                    <template #optiongroup="slotProps">
+                        <div class="px-3 py-1 text-[9px] font-bold text-text-muted uppercase">
+                            {{ slotProps.option.label }}
+                        </div>
+                    </template>
+
+                    <!-- OPTION -->
+                    <template #option="slotProps">
+                        <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                            <div class="w-3 h-3 rounded-full border"
+                                :style="{ backgroundColor: slotProps.option.value }"></div>
+                            <span class="text-[11px] text-text-main">
+                                {{ slotProps.option.name }}
+                            </span>
+                        </div>
+                    </template>
+
+                    <!-- VALUE -->
                     <template #value="slotProps">
-                        <div v-if="slotProps.value" class="flex items-center gap-2">
-                            <div class="w-2.5 h-2.5 rounded-full border border-gray-300 dark:border-gray-600"
+                        <div v-if="slotProps.value" class="flex items-center gap-2.5">
+                            <div class="w-3 h-3 rounded-full border"
                                 :style="{ backgroundColor: slotProps.value.value }"></div>
-                            <span class="text-[11px] font-bold text-text-main dark:text-gray-200">
+                            <span class="text-[12px] md:text-[11px] text-text-main">
                                 {{ slotProps.value.name }}
                             </span>
                         </div>
                     </template>
 
-                    <template #option="slotProps">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2.5 h-2.5 rounded-full border border-gray-300 dark:border-gray-600"
-                                :style="{ backgroundColor: slotProps.option.value }"></div>
-                            <span class="text-[11px] text-text-main dark:text-gray-200">
-                                {{ slotProps.option.name }}
-                            </span>
-                        </div>
-                    </template>
                 </Select>
             </div>
 
-            <div class="flex items-center gap-2">
-                <span class="text-[10px] font-medium text-text-muted">Color:</span>
-                <Select v-model="activePrimary" :options="primaryColors" optionLabel="name"
-                    class="w-[115px] !border-surface-border dark:!border-surface-border-dark !bg-transparent hover:!bg-gray-50 dark:hover:!bg-white/5 transition-all shadow-sm"
-                    @change="applyPrimary">
+            <div class="hidden sm:block w-px h-4 bg-gray-300 dark:bg-gray-700"></div>
 
+            <!-- PRIMARY -->
+            <div class="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
+                <span class="text-[11px] md:text-[10px] font-semibold shrink-0">Color:</span>
+
+                <Select
+                    v-model="activePrimary"
+                    :options="primaryColors"
+                    optionLabel="name"
+                    class="flex-1 sm:flex-none sm:w-[135px] !border-transparent hover:!border-gray-300 dark:hover:!border-gray-600 !bg-transparent hover:!bg-gray-100 dark:hover:!bg-white/5 transition-all"
+                    @change="applyPrimary"
+                >
+
+                    <!-- HEADER -->
+                    <template #header>
+                        <div class="px-3 py-2 text-[10px] font-semibold text-text-muted">
+                            Pick Color
+                        </div>
+                    </template>
+
+                    <!-- OPTION -->
+                    <template #option="slotProps">
+                        <div class="flex items-center gap-2.5 px-2 py-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-white/5 transition">
+                            <div class="w-3 h-3 rounded-full"
+                                :style="{ backgroundColor: slotProps.option.value }"></div>
+                            <span class="text-[11px] text-text-main">
+                                {{ slotProps.option.name }}
+                            </span>
+                        </div>
+                    </template>
+
+                    <!-- VALUE -->
                     <template #value="slotProps">
-                        <div v-if="slotProps.value" class="flex items-center gap-2">
-                            <div class="w-2.5 h-2.5 rounded-full" :style="{ backgroundColor: slotProps.value.value }">
-                            </div>
-                            <span class="text-[11px] font-bold text-text-main dark:text-gray-200">
+                        <div v-if="slotProps.value" class="flex items-center gap-2.5">
+                            <div class="w-3 h-3 rounded-full"
+                                :style="{ backgroundColor: slotProps.value.value }"></div>
+                            <span class="text-[12px] md:text-[11px] text-text-main">
                                 {{ slotProps.value.name }}
                             </span>
                         </div>
                     </template>
 
-                    <template #option="slotProps">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2.5 h-2.5 rounded-full" :style="{ backgroundColor: slotProps.option.value }">
-                            </div>
-                            <span class="text-[11px] text-text-main dark:text-gray-200">
-                                {{ slotProps.option.name }}
-                            </span>
-                        </div>
-                    </template>
                 </Select>
             </div>
 
@@ -178,12 +209,22 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Menjaga ukuran Select tetap compact */
-:deep(.p-select-label) {
-    padding: 0.35rem 0.6rem !important;
+:deep(.p-select-dropdown) {
+    color: #111827 !important;
+    width: 1.8rem !important;
 }
 
-:deep(.p-select-dropdown) {
-    width: 2rem !important;
+.dark :deep(.p-select-dropdown) {
+    color: #ffffff !important;
+}
+
+:deep(.p-select) {
+    box-shadow: none !important;
+}
+
+/* BONUS: biar dropdown lebih clean */
+:deep(.p-select-panel) {
+    border-radius: 10px;
+    padding: 4px;
 }
 </style>
