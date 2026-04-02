@@ -6,7 +6,7 @@ const socials = [
     { label: 'LinkedIn', value: 'ivano-rossi-sugiyanto', url: 'https://linkedin.com/in/ivano-rossi-sugiyanto', icon: 'pi-linkedin', color: 'text-brand-blue' },
     { label: 'GitHub', value: 'ipan140', url: 'https://github.com/ipan140', icon: 'pi-github', color: 'text-brand-blue' },
     { label: 'X (Twitter)', value: 'ivanorossi_x', url: 'https://twitter.com/ivanorossi_x', icon: 'pi-twitter', color: '' },
-    { label: 'Instagram', value: '@ivanorossi', url: 'https://instagram.com/ivanorossi', icon: 'pi-instagram', color: '' },
+    { label: 'Instagram', value: '@ipanrossi', url: 'https://instagram.com/ipanrossi', icon: 'pi-instagram', color: '' },
 ];
 
 // ✅ Fungsi download pakai fetch + blob agar tidak dibuka di tab baru
