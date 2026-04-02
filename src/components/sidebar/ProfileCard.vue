@@ -2,7 +2,6 @@
 import Avatar from 'primevue/avatar';
 import Button from 'primevue/button';
 
-// Data sosial media Ivano Rossi Sugiyanto yang diperbarui
 const socials = [
     { label: 'Based In', value: 'Surabaya, Indonesia', icon: 'pi-map-marker', color: '' },
     { label: 'GitHub', value: 'ivanorossi', icon: 'pi-github', color: 'text-brand-blue' },
@@ -18,8 +17,7 @@ const socials = [
         class="bg-surface-card dark:bg-surface-card-dark rounded-xl p-4 border border-surface-border dark:border-surface-border-dark text-center">
         <Avatar label="IS" size="xlarge" shape="circle"
             class="!bg-brand-pink !text-white !font-bold !w-16 !h-16 mx-auto" />
-
-        <h2 class="text-sm font-bold mt-2 text-text-main dark:text-white">Ivano Rossi Sugiyanto</h2>
+        <h2 class="text-sm font-bold mt-2 text-text-main">Ivano Rossi Sugiyanto</h2>
         <p class="text-[10px] text-text-muted leading-relaxed mb-3">
             UI/UX Designer | Fullstack Developer | Telkom University Graduate
         </p>
@@ -37,8 +35,7 @@ const socials = [
                     <span>{{ social.label }}</span>
                 </div>
 
-                <span
-                    :class="['font-medium truncate max-w-[120px]', social.color || 'text-text-main dark:text-gray-200']">
+                <span :class="['font-medium truncate max-w-[120px]', social.color || 'text-text-main']">
                     {{ social.value }}
                 </span>
             </div>

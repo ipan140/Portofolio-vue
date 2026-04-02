@@ -6,7 +6,7 @@
                 <i class="pi pi-file text-brand-pink text-[18px]"></i>
             </div>
             <div>
-                <h3 class="text-[14px] font-bold text-text-main dark:text-white">Publications</h3>
+                <h3 class="text-[14px] font-bold text-text-main">Publications</h3>
                 <p class="text-[11px] text-text-muted">Research papers and conference articles</p>
             </div>
         </div>
@@ -19,7 +19,7 @@
 
                     <div class="text-center">
                         <h4
-                            class="text-[11px] font-bold text-text-main dark:text-gray-100 group-hover:text-brand-pink transition-colors truncate">
+                            class="text-[11px] font-bold text-text-main group-hover:text-brand-pink transition-colors truncate">
                             {{ item.title }}
                         </h4>
                         <p class="text-[9px] font-semibold text-brand-blue dark:text-blue-400 mt-0.5">

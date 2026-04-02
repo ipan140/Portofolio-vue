@@ -6,7 +6,7 @@
                 <i class="pi pi-desktop text-brand-pink text-[18px]"></i>
             </div>
             <div>
-                <h3 class="text-[14px] font-bold text-text-main dark:text-white">My Projects Library</h3>
+                <h3 class="text-[14px] font-bold text-text-main">My Projects Library</h3>
                 <p class="text-[11px] text-text-muted">Scrolling through {{ projects.length }} projects</p>
             </div>
         </div>

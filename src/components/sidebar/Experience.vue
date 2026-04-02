@@ -1,7 +1,7 @@
 <template>
     <div
         class="bg-surface-card dark:bg-surface-card-dark rounded-xl p-4 border border-surface-border dark:border-surface-border-dark mt-2">
-        <div class="text-[12px] font-bold mb-4 text-text-main dark:text-white flex items-center gap-2">
+        <div class="text-[12px] font-bold mb-4 text-text-main flex items-center gap-2">
             <i class="pi pi-briefcase text-brand-pink text-[14px]"></i>
             Experience
         </div>
@@ -20,7 +20,7 @@
                 <div class="flex flex-col gap-0.5">
                     <span class="text-[9px] text-brand-pink font-bold tracking-wide uppercase">September 2021 –
                         Present</span>
-                    <h4 class="text-[10px] font-bold text-text-main dark:text-gray-100">Position Name</h4>
+                    <h4 class="text-[10px] font-bold text-text-main ">Position Name</h4>
                     <p class="text-[9px] text-text-muted leading-relaxed">Company Name</p>
                 </div>
             </div>
@@ -35,7 +35,7 @@
 
                 <div class="flex flex-col gap-0.5">
                     <span class="text-[9px] text-text-muted font-medium">July 2019 – August 2021</span>
-                    <h4 class="text-[10px] font-bold text-text-main dark:text-gray-100">Position Name</h4>
+                    <h4 class="text-[10px] font-bold text-text-main ">Position Name</h4>
                     <p class="text-[9px] text-text-muted leading-relaxed">Company Name</p>
                 </div>
             </div>

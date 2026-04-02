@@ -1,77 +1,74 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Variabel Brand Statis */
+  /* Variabel Brand */
   --color-brand-pink: #e8417a;
-  --color-brand-pink-dark: #f0547c;
   --color-brand-blue: #4878c0;
-  --color-brand-blue-dark: #3a5abf;
 
-  /* Mapping Variabel Dinamis ke Utility Class Tailwind */
+  /* Mapping ke Utility Class */
   --color-surface-bg: var(--bg-color);
   --color-surface-card: var(--card-color);
   --color-surface-border: var(--border-color);
-  --color-surface-hover: var(--hover-color);
-
   --color-text-main: var(--text-color);
   --color-text-muted: var(--muted-color);
-
-  --color-tag-bg: var(--tag-bg-color);
-  --color-tag-text: var(--tag-text-color);
 }
 
 @layer base {
   :root {
-    /* Mode Terang - Warna teks harus gelap (#1a1d23) agar terlihat */
     --bg-color: #eef0f4;
     --card-color: #f5f6f8;
     --border-color: #e2e4e9;
-    --hover-color: #eceef2;
-    --text-color: #1a1d23;
+    --text-color: #1a1d23 !important; /* Paksa hitam di Light */
     --muted-color: #64748b;
-    --tag-bg-color: #fde8ef;
-    --tag-text-color: #b02258;
   }
 
-  /* Tailwind v4 mendeteksi .dark secara otomatis jika dikonfigurasi di root html */
   .dark {
     --bg-color: #0f1117;
     --card-color: #181c25;
     --border-color: #252a36;
-    --hover-color: #1e2230;
-    --text-color: #f8fafc; /* Warna teks terang untuk background gelap */
+    --text-color: #f8fafc !important; /* Paksa putih di Dark */
     --muted-color: #94a3b8;
-    --tag-bg-color: #3a1024;
-    --tag-text-color: #f4a0bc;
   }
 
   body {
-    /* Memastikan transisi warna halus di seluruh elemen */
-    @apply bg-surface-bg text-text-main transition-colors duration-300 antialiased;
-    font-family: 'DM Sans', system-ui, sans-serif;
-    margin: 0;
-    font-size: 13px;
-    /* Paksa warna dasar teks menggunakan variabel agar tidak hilang di mode light */
+    @apply bg-surface-bg transition-colors duration-300 antialiased;
     color: var(--text-color);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+  }
+
+  .p-button:not(.p-button-outlined) *,
+  .p-tag:not(.p-tag-outlined) *,
+  .bg-brand-pink * {
+    color: #ffffff !important;
   }
 }
 
-/* Perbaikan integrasi dengan PrimeVue */
 @layer p-components {
   .p-component {
-    @apply transition-colors duration-300;
-    /* Gunakan variabel border agar sinkron dengan layout */
-    border-color: var(--border-color) !important;
+    font-family: inherit;
+    color: var(--text-color) !important;
   }
 
   .p-card {
     background: var(--card-color) !important;
-    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
   }
 
-  /* Perbaikan teks untuk PrimeVue Button atau Tag agar tetap kontras */
-  .p-button-label,
-  .p-tag-value {
-    color: inherit;
+  .p-avatar {
+    @apply shrink-0;
   }
 }

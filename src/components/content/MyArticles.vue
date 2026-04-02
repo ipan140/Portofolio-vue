@@ -6,7 +6,7 @@
                 <i class="pi pi-pencil text-brand-pink text-[18px]"></i>
             </div>
             <div>
-                <h3 class="text-[14px] font-bold text-text-main dark:text-white">My Articles</h3>
+                <h3 class="text-[14px] font-bold text-text-main">My Articles</h3>
                 <p class="text-[11px] text-text-muted">Recent insights and tutorials</p>
             </div>
         </div>
@@ -24,7 +24,7 @@
 
                     <div class="flex flex-col gap-1 overflow-hidden">
                         <h4
-                            class="text-[12px] font-bold text-text-main dark:text-gray-100 group-hover:text-brand-pink transition-colors leading-snug line-clamp-2">
+                            class="text-[12px] font-bold text-text-main group-hover:text-brand-pink transition-colors leading-snug line-clamp-2">
                             {{ item.title }}
                         </h4>
                         <div class="flex items-center gap-2 text-[10px] text-text-muted">
