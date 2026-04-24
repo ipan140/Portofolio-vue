@@ -9,12 +9,10 @@ const socials = [
     { label: 'Instagram', value: '@ipanrossi', url: 'https://instagram.com/ipanrossi', icon: 'pi-instagram', color: '' },
 ];
 
-// ✅ Fungsi download pakai fetch + blob agar tidak dibuka di tab baru
 const downloadCV = async () => {
     try {
         const response = await fetch('/img/CVATS_ivano.pdf');
         if (!response.ok) throw new Error('File tidak ditemukan');
-        
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         
@@ -35,7 +33,6 @@ const downloadCV = async () => {
 <template>
     <div class="bg-surface-card dark:bg-surface-card-dark rounded-xl p-5 border border-surface-border dark:border-surface-border-dark text-center shadow-sm transition-colors duration-300">
 
-        <!-- ✅ Foto diperbesar jadi w-24 h-24 -->
         <div class="flex justify-center mb-3">
             <img
                 src="/img/img1.jpeg"
@@ -50,7 +47,6 @@ const downloadCV = async () => {
             Surabaya Graduate
         </p>
 
-        <!-- ✅ Ganti <a> pakai <button> + fungsi downloadCV -->
         <button @click="downloadCV" class="block w-full no-underline bg-transparent border-0 p-0 cursor-pointer">
             <div class="group flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-white/5 border border-surface-border dark:border-surface-border-dark hover:border-brand-pink/50 hover:bg-brand-pink/5 transition-all duration-300">
                 <div class="flex items-center gap-3">

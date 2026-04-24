@@ -6,9 +6,13 @@
             Education
         </div>
 
-        <div class="flex flex-col">
+        <div class="flex flex-col max-h-[300px] overflow-y-auto pr-2 
+                    [&::-webkit-scrollbar]:w-1 
+                    [&::-webkit-scrollbar-track]:bg-transparent 
+                    [&::-webkit-scrollbar-thumb]:bg-[#cbd5e1] 
+                    [&::-webkit-scrollbar-thumb]:rounded-full 
+                    dark:[&::-webkit-scrollbar-thumb]:bg-[#475569]">
 
-            <!-- UNIVERSITAS TELKOM -->
             <div class="relative pl-6 pb-4 group">
                 <div
                     class="absolute left-[3.5px] top-2 bottom-0 w-[1px] bg-surface-border dark:bg-surface-border-dark group-last:hidden">
@@ -18,19 +22,21 @@
                 </div>
 
                 <div class="flex flex-col gap-0.5">
-                    <span class="text-[9px] text-brand-pink font-bold tracking-wide uppercase">Jan 2021 – Oktober 2025</span>
+                    <span class="text-[9px] text-brand-pink font-bold tracking-wide uppercase">Jan 2021 – Oktober
+                        2025</span>
                     <h4 class="text-[10px] font-bold text-text-main">Sistem Informasi</h4>
                     <p class="text-[9px] text-text-muted leading-relaxed">Universitas Telkom</p>
                     <p class="text-[9px] text-text-muted leading-relaxed">IPK: 3.47</p>
                     <div class="flex flex-wrap gap-1 mt-1">
-                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Trello</span>
+                        <span
+                            class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Trello</span>
                         <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">CSS</span>
-                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">+17 keahlian</span>
+                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">+17
+                            keahlian</span>
                     </div>
                 </div>
             </div>
 
-            <!-- SMA WACHID HASYIM 2 TAMAN -->
             <div class="relative pl-6 pb-2 group">
                 <div
                     class="absolute left-[3.5px] top-2 bottom-0 w-[1px] bg-surface-border dark:bg-surface-border-dark group-last:hidden">

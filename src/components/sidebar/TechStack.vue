@@ -1,27 +1,40 @@
 <script setup lang="ts">
+import { markRaw } from 'vue';
+
+import {
+    DiJavascript1, DiReact, DiHtml5, DiCss3, DiPython,
+    DiBootstrap, DiGit, DiGo, DiLaravel, DiMysql,
+    DiPostgresql, DiTrello
+} from 'vue-icons-plus/di';
+
+import {
+    SiTypescript, SiCplusplus, SiDart, SiFigma, SiFirebase,
+    SiFlutter, SiNextdotjs, SiNpm, SiSlack, SiVuedotjs
+} from 'vue-icons-plus/si';
+
 const skills = [
-    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
-    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
-    { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
-    { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg' },
-    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
-    { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg' },
-    { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
-    { name: 'Dart', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg' },
-    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
-    { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg' },
-    { name: 'Flutter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
-    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
-    { name: 'Go', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg' },
-    { name: 'Laravel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
-    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
-    { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
-    { name: 'npm', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg' },
-    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
-    { name: 'Slack', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/slack/slack-original.svg' },
-    { name: 'Trello', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-original.svg' },
-    { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+    { name: 'JavaScript', icon: markRaw(DiJavascript1) },
+    { name: 'TypeScript', icon: markRaw(SiTypescript) },
+    { name: 'React', icon: markRaw(DiReact) },
+    { name: 'HTML5', icon: markRaw(DiHtml5) },
+    { name: 'CSS3', icon: markRaw(DiCss3) },
+    { name: 'Python', icon: markRaw(DiPython) },
+    { name: 'Bootstrap', icon: markRaw(DiBootstrap) },
+    { name: 'C++', icon: markRaw(SiCplusplus) },
+    { name: 'Dart', icon: markRaw(SiDart) },
+    { name: 'Figma', icon: markRaw(SiFigma) },
+    { name: 'Firebase', icon: markRaw(SiFirebase) },
+    { name: 'Flutter', icon: markRaw(SiFlutter) },
+    { name: 'Git', icon: markRaw(DiGit) },
+    { name: 'Go', icon: markRaw(DiGo) },
+    { name: 'Laravel', icon: markRaw(DiLaravel) },
+    { name: 'MySQL', icon: markRaw(DiMysql) },
+    { name: 'Next.js', icon: markRaw(SiNextdotjs) },
+    { name: 'npm', icon: markRaw(SiNpm) },
+    { name: 'PostgreSQL', icon: markRaw(DiPostgresql) },
+    { name: 'Slack', icon: markRaw(SiSlack) },
+    { name: 'Trello', icon: markRaw(DiTrello) },
+    { name: 'Vue.js', icon: markRaw(SiVuedotjs) },
 ];
 </script>
 
@@ -33,14 +46,25 @@ const skills = [
             Tech Stack
         </h3>
 
-        <div class="flex flex-wrap gap-1.5">
+        <div class="flex flex-wrap gap-1.5 max-h-[200px] overflow-y-auto pr-2 
+                    [&::-webkit-scrollbar]:w-1 
+                    [&::-webkit-scrollbar-track]:bg-transparent 
+                    [&::-webkit-scrollbar-thumb]:bg-[#cbd5e1] 
+                    [&::-webkit-scrollbar-thumb]:rounded-full 
+                    dark:[&::-webkit-scrollbar-thumb]:bg-[#475569]">
+
             <Tag v-for="skill in skills" :key="skill.name"
-                class="!bg-brand-pink !text-white !text-[9px] !px-2.5 !py-1 !rounded-full !border-none flex items-center gap-1.5 shadow-sm">
-                <template #icon>
-                    <img :src="skill.icon" class="w-3 h-3 brightness-0 invert" :alt="skill.name" />
-                </template>
-                <span class="font-bold tracking-wide">{{ skill.name }}</span>
+                class="!bg-brand-pink !text-white !rounded-full !border-none shadow-sm !px-2.5 !py-1">
+
+                <div class="flex items-center gap-1.5">
+                    
+                    <component :is="skill.icon" class="w-[14px] h-[14px] flex-shrink-0" />
+                    
+                    <span class="text-[10px] font-bold tracking-wide leading-none">{{ skill.name }}</span>
+                    
+                </div>
             </Tag>
+
         </div>
     </div>
 </template>
