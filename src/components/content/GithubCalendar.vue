@@ -89,7 +89,7 @@
                 </div>
 
                 <!-- Calendar Outer Box -->
-                <div v-if="activityOverview"
+                <div
                     class="relative rounded-xl border border-surface-border dark:border-surface-border-dark bg-white/20 dark:bg-white/5 p-4 overflow-hidden">
                     
                     <!-- Skeleton Loader -->
@@ -155,21 +155,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Organization Badge as seen in image -->
-                <div v-if="activityOverview" class="mt-3 flex items-center">
-                    <a href="https://github.com/cebes-tech" target="_blank"
-                        class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-brand-pink/10 hover:border-brand-pink/40 border border-surface-border dark:border-surface-border-dark text-[11px] font-medium text-text-main transition-colors">
-                        <img src="https://avatars.githubusercontent.com/u/282830166?v=4" alt="cebes-tech" class="w-4 h-4 rounded-full object-cover" />
-                        <span>@cebes-tech</span>
-                    </a>
-                </div>
-
-                <!-- When Activity overview is turned off -->
-                <div v-else class="rounded-xl border border-dashed border-surface-border dark:border-surface-border-dark p-6 text-center text-text-muted text-[11px]">
-                    <i class="pi pi-eye-slash text-xl mb-1 block"></i>
-                    Activity overview is hidden. Turn it back on in Contribution settings.
                 </div>
             </div>
 
