@@ -40,37 +40,235 @@
     --theme-secondary: #5a8dec;
   }
 
-  /* 3. CUPCAKE THEME */
+  /* 3. GITHUB LIGHT */
+  [data-theme='github-light'] {
+    --bg-color: #f6f8fa;
+    --card-color: #ffffff;
+    --border-color: #d0d7de;
+    --text-color: #1f2328 !important;
+    --muted-color: #656d76;
+    --theme-primary: #0969da;
+    --theme-secondary: #1a7f37;
+  }
+
+  /* 4. CATPPUCCIN LATTE */
+  [data-theme='catppuccin-latte'] {
+    --bg-color: #eff1f5;
+    --card-color: #e6e9ef;
+    --border-color: #ccd0da;
+    --text-color: #4c4f69 !important;
+    --muted-color: #7c7f93;
+    --theme-primary: #8839ef;
+    --theme-secondary: #1e66f5;
+  }
+
+  /* 5. NORD SNOW */
+  [data-theme='nord-snow'] {
+    --bg-color: #eceff4;
+    --card-color: #e5e9f0;
+    --border-color: #d8dee9;
+    --text-color: #2e3440 !important;
+    --muted-color: #4c566a;
+    --theme-primary: #5e81ac;
+    --theme-secondary: #88c0d0;
+  }
+
+  /* 6. CUPCAKE THEME */
   [data-theme='cupcake'] {
     --bg-color: #faf7f5;
     --card-color: #ffffff;
     --border-color: #e0d2d1;
     --text-color: #291334 !important;
     --muted-color: #8c7f8e;
-    --theme-primary: #65c3c8; /* Tosca pastel */
-    --theme-secondary: #ef9fbc; /* Pink pastel */
+    --theme-primary: #65c3c8;
+    --theme-secondary: #ef9fbc;
   }
 
-  /* 4. DRACULA THEME */
+  /* 7. ONE DARK PRO (Atom / VS Code) */
+  [data-theme='one-dark'] {
+    --bg-color: #21252b;
+    --card-color: #282c34;
+    --border-color: #353b45;
+    --text-color: #abb2bf !important;
+    --muted-color: #7e8799;
+    --theme-primary: #61afef;
+    --theme-secondary: #98c379;
+  }
+
+  /* 8. TOKYO NIGHT */
+  [data-theme='tokyo-night'] {
+    --bg-color: #1a1b26;
+    --card-color: #24283b;
+    --border-color: #383e5a;
+    --text-color: #c0caf5 !important;
+    --muted-color: #7aa2f7;
+    --theme-primary: #bb9af7;
+    --theme-secondary: #7dcfff;
+  }
+
+  /* 9. CATPPUCCIN MOCHA */
+  [data-theme='catppuccin-mocha'] {
+    --bg-color: #181825;
+    --card-color: #1e1e2e;
+    --border-color: #313244;
+    --text-color: #cdd6f4 !important;
+    --muted-color: #a6adc8;
+    --theme-primary: #cba6f7;
+    --theme-secondary: #89b4fa;
+  }
+
+  /* 10. NORD DARK */
+  [data-theme='nord'] {
+    --bg-color: #242933;
+    --card-color: #2e3440;
+    --border-color: #3b4252;
+    --text-color: #eceff4 !important;
+    --muted-color: #88c0d0;
+    --theme-primary: #88c0d0;
+    --theme-secondary: #81a1c1;
+  }
+
+  /* 11. DRACULA THEME */
   [data-theme='dracula'] {
     --bg-color: #282a36;
-    --card-color: #44475a;
-    --border-color: #6272a4;
+    --card-color: #343746;
+    --border-color: #44475a;
     --text-color: #f8f8f2 !important;
     --muted-color: #6272a4;
-    --theme-primary: #ff79c6; /* Pink neon Dracula */
-    --theme-secondary: #bd93f9; /* Ungu Dracula */
+    --theme-primary: #ff79c6;
+    --theme-secondary: #bd93f9;
   }
 
-  /* 5. PROCYON THEME */
+  /* 12. NIGHT OWL */
+  [data-theme='night-owl'] {
+    --bg-color: #011627;
+    --card-color: #0b253a;
+    --border-color: #1d3b53;
+    --text-color: #d6deeb !important;
+    --muted-color: #7fdbca;
+    --theme-primary: #82aaff;
+    --theme-secondary: #c792ea;
+  }
+
+  /* 13. SYNTHWAVE '84 */
+  [data-theme='synthwave'] {
+    --bg-color: #262335;
+    --card-color: #34294f;
+    --border-color: #493d6b;
+    --text-color: #fff1f3 !important;
+    --muted-color: #ff7edb;
+    --theme-primary: #f92aad;
+    --theme-secondary: #ffe600;
+  }
+
+  /* 14. GRUVBOX DARK */
+  [data-theme='gruvbox'] {
+    --bg-color: #1d2021;
+    --card-color: #282828;
+    --border-color: #3c3836;
+    --text-color: #ebdbb2 !important;
+    --muted-color: #a89984;
+    --theme-primary: #fe8019;
+    --theme-secondary: #fabd2f;
+  }
+
+  /* 15. PROCYON THEME */
   [data-theme='procyon'] {
     --bg-color: #0b0f19;
     --card-color: #121827;
     --border-color: #1f2937;
     --text-color: #e2e8f0 !important;
     --muted-color: #64748b;
-    --theme-primary: #8b5cf6; /* Ungu elegan */
-    --theme-secondary: #14b8a6; /* Teal */
+    --theme-primary: #8b5cf6;
+    --theme-secondary: #14b8a6;
+  }
+
+  /* 16. MAROON VELVET (Dark Wine) */
+  [data-theme='maroon'] {
+    --bg-color: #16080c;
+    --card-color: #240e15;
+    --border-color: #401622;
+    --text-color: #ffe4e6 !important;
+    --muted-color: #fb7185;
+    --theme-primary: #e11d48;
+    --theme-secondary: #be123c;
+  }
+
+  /* 17. ROSÉ PINE (Dark) */
+  [data-theme='rose-pine'] {
+    --bg-color: #191724;
+    --card-color: #1f1d2e;
+    --border-color: #26233a;
+    --text-color: #e0def4 !important;
+    --muted-color: #908caa;
+    --theme-primary: #eb6f92;
+    --theme-secondary: #f6c177;
+  }
+
+  /* 18. ROSÉ PINE DAWN (Pastel Light) */
+  [data-theme='rose-pine-dawn'] {
+    --bg-color: #faf4ed;
+    --card-color: #fffaf3;
+    --border-color: #cecacd;
+    --text-color: #575279 !important;
+    --muted-color: #797593;
+    --theme-primary: #b4637a;
+    --theme-secondary: #ea9d34;
+  }
+
+  /* 19. SAKURA PASTEL (Soft Pink Light) */
+  [data-theme='sakura-pastel'] {
+    --bg-color: #fff5f7;
+    --card-color: #ffffff;
+    --border-color: #fbcfe8;
+    --text-color: #4a1525 !important;
+    --muted-color: #9d4862;
+    --theme-primary: #f43f5e;
+    --theme-secondary: #ec4899;
+  }
+
+  /* 20. MINT PASTEL (Fresh Green Light) */
+  [data-theme='mint-pastel'] {
+    --bg-color: #f0fdf4;
+    --card-color: #ffffff;
+    --border-color: #bbf7d0;
+    --text-color: #14532d !important;
+    --muted-color: #4d7c0f;
+    --theme-primary: #10b981;
+    --theme-secondary: #059669;
+  }
+
+  /* 21. MONOKAI PRO (Dark) */
+  [data-theme='monokai-pro'] {
+    --bg-color: #222222;
+    --card-color: #2d2a2e;
+    --border-color: #403e41;
+    --text-color: #fcfcfa !important;
+    --muted-color: #939293;
+    --theme-primary: #ffd866;
+    --theme-secondary: #ff6188;
+  }
+
+  /* 22. EVERFOREST DARK */
+  [data-theme='everforest'] {
+    --bg-color: #232a2e;
+    --card-color: #2d353b;
+    --border-color: #404c51;
+    --text-color: #d3c6aa !important;
+    --muted-color: #859289;
+    --theme-primary: #a7c080;
+    --theme-secondary: #7fbbb3;
+  }
+
+  /* 23. SOLARIZED DARK */
+  [data-theme='solarized-dark'] {
+    --bg-color: #002b36;
+    --card-color: #073642;
+    --border-color: #586e75;
+    --text-color: #839496 !important;
+    --muted-color: #657b83;
+    --theme-primary: #268bd2;
+    --theme-secondary: #2aa198;
   }
 
   body {

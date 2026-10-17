@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const currentYear = new Date().getFullYear();
+
 const socials = [
     { label: 'LinkedIn', value: 'ivano-rossi-sugiyanto', url: 'https://linkedin.com/in/ivano-rossi-sugiyanto', icon: 'pi-linkedin', color: 'hover:text-brand-blue' },
     { label: 'GitHub', value: 'ipan140', url: 'https://github.com/ipan140', icon: 'pi-github', color: 'hover:text-brand-pink' },
@@ -14,7 +16,7 @@ const socials = [
 
             <!-- LEFT -->
             <div class="text-[10px] text-text-muted font-medium">
-                © 2026 <span class="text-brand-pink">Ivano Rossi</span>. Built with Vue 3 & Tailwind v4.
+                © {{ currentYear }} <span class="text-brand-pink font-semibold">Ivano Rossi Sugiyanto</span>. Built with Vue 3 & Tailwind v4.
             </div>
 
             <!-- STATUS -->
