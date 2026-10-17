@@ -11,7 +11,10 @@ const socials = [
 
 const downloadCV = async () => {
     try {
-        const response = await fetch('/img/CVATS_ivano.pdf');
+        let response = await fetch('/CVATS_ivano.pdf');
+        if (!response.ok) {
+            response = await fetch('/img/CVATS_ivano.pdf');
+        }
         if (!response.ok) throw new Error('File tidak ditemukan');
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
@@ -24,8 +27,8 @@ const downloadCV = async () => {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
     } catch (error) {
-        console.error('Gagal download:', error);
-        alert('Gagal mendownload CV, coba lagi!');
+        console.error('Gagal download via blob, fallback open:', error);
+        window.open('/CVATS_ivano.pdf', '_blank');
     }
 };
 </script>
@@ -43,7 +46,7 @@ const downloadCV = async () => {
 
         <h2 class="text-sm font-bold text-text-main">Ivano Rossi Sugiyanto</h2>
         <p class="text-[10px] text-text-muted leading-relaxed mb-4">
-            UI/UX Designer | Frontend Developer | Backend Developer | Freelancer | Graphic Designer | Telkom University
+            Junior Software Developer | UI/UX Designer | Frontend Developer | Backend Developer | Freelancer | Graphic Designer | Telkom University
             Surabaya Graduate
         </p>
 
