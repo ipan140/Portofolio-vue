@@ -13,6 +13,7 @@
                     [&::-webkit-scrollbar-thumb]:rounded-full 
                     dark:[&::-webkit-scrollbar-thumb]:bg-[#475569]">
 
+            <!-- CEBES Indonesia (Kontrak) -->
             <div class="relative pl-6 pb-4 group">
                 <div
                     class="absolute left-[3.5px] top-2 bottom-0 w-[1px] bg-surface-border dark:bg-surface-border-dark group-last:hidden">
@@ -22,8 +23,44 @@
                 </div>
 
                 <div class="flex flex-col gap-0.5">
-                    <span class="text-[9px] text-brand-pink font-bold tracking-wide uppercase">Nov 2025 – Mei
-                        2026</span>
+                    <span class="text-[9px] text-brand-pink font-bold tracking-wide uppercase">Jun 2026 – Mei 2027 · 1 thn</span>
+                    <h4 class="text-[10px] font-bold text-text-main">Junior Software Developer</h4>
+                    <p class="text-[9px] text-text-muted leading-relaxed">CEBES Indonesia · Kontrak</p>
+                    <p class="text-[9px] text-text-muted leading-relaxed">The Samator Building 09th Floor, Unit-17 Raya
+                        Kedung Baruk 26-28, Surabaya</p>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span
+                            class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">TypeScript</span>
+                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Postman
+                            API</span>
+                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">C#</span>
+                        <span
+                            class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">PostgreSQL</span>
+                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Swagger
+                            API</span>
+                        <span
+                            class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Vue.js</span>
+                        <span
+                            class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Pengembangan
+                            Software</span>
+                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">Vite</span>
+                        <span class="text-[8px] bg-brand-pink/10 text-brand-pink px-1.5 py-0.5 rounded-full">.NET
+                            Framework</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CEBES Indonesia (Magang) -->
+            <div class="relative pl-6 pb-4 group">
+                <div
+                    class="absolute left-[3.5px] top-2 bottom-0 w-[1px] bg-surface-border dark:bg-surface-border-dark group-last:hidden">
+                </div>
+                <div
+                    class="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-brand-pink/60 border-2 border-surface-card dark:border-surface-card-dark z-10">
+                </div>
+
+                <div class="flex flex-col gap-0.5">
+                    <span class="text-[9px] text-text-muted font-medium">Nov 2025 – Mei 2026 · 7 bln</span>
                     <h4 class="text-[10px] font-bold text-text-main">Junior Software Developer</h4>
                     <p class="text-[9px] text-text-muted leading-relaxed">CEBES Indonesia · Magang</p>
                     <p class="text-[9px] text-text-muted leading-relaxed">The Samator Building 09th Floor, Unit-17 Raya
