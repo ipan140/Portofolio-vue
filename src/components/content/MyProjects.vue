@@ -25,15 +25,6 @@ const projects = ref([
         tags: ['Vue.js', 'Go (Golang)', 'PHP', 'PostgreSQL', 'MySQL']
     },
     {
-        name: 'MPM Enterprise System Revamp',
-        type: 'Fullstack (FE + BE)',
-        typeColor: 'brand',
-        icon: 'pi pi-cog',
-        iconBg: 'bg-purple-500/15 border-purple-500/30 text-purple-500',
-        description: 'Modernisasi arsitektur sistem enterprise MPM dengan backend performa tinggi berbasis C# .NET dan integrasi endpoint API terpusat.',
-        tags: ['C#', '.NET Core', 'Vue.js', 'Clean Architecture']
-    },
-    {
         name: 'POS Point of Sale & Dashboard System',
         type: 'Fullstack (FE + BE)',
         typeColor: 'brand',
