@@ -11,9 +11,9 @@ const socials = [
 
 const downloadCV = async () => {
     try {
-        let response = await fetch('/CVATS_ivano.pdf');
+        let response = await fetch('/CV_Ivano_Rossi_Sugiyanto.pdf');
         if (!response.ok) {
-            response = await fetch('/img/CVATS_ivano.pdf');
+            response = await fetch('/img/CV_Ivano_Rossi_Sugiyanto.pdf');
         }
         if (!response.ok) throw new Error('File tidak ditemukan');
         const blob = await response.blob();
@@ -28,7 +28,7 @@ const downloadCV = async () => {
         window.URL.revokeObjectURL(url);
     } catch (error) {
         console.error('Gagal download via blob, fallback open:', error);
-        window.open('/CVATS_ivano.pdf', '_blank');
+        window.open('/CV_Ivano_Rossi_Sugiyanto.pdf', '_blank');
     }
 };
 </script>
